@@ -3,6 +3,7 @@
 from flask import Blueprint
 
 api_bp = Blueprint('api', __name__)
+from . import funds, companies, investments, financial_data
 
 # You would typically define your routes here or import them from other files
 # For example:

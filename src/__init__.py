@@ -17,7 +17,7 @@ def create_app():
     app.config.from_object(Config)
 
     # Initialize extensions here
-    from venture_capital_fund_manager_api.extensions import db, ma, migrate
+    from venture_capital_fund_manager_api.extensions import db, ma, migrate, jwt
     from venture_capital_fund_manager_api.api import api_bp
 
     db.init_app(app)

@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from venture_capital_fund_manager_api.config import Config
 from venture_capital_fund_manager_api.instance.config import DevelopmentConfig, ProductionConfig
 import os
+from flasgger import Swagger
 
 def create_app():
     app = Flask(__name__)

@@ -4,28 +4,34 @@ from venture_capital_fund_manager_api.instance.config import DevelopmentConfig, 
 import os
 
 def create_app():
-	app = Flask(__name__)
-	# load configuration
-	env = os.environ.get('FLASK_ENV', 'development')
-	if env == 'development':
-		app.config.from_object(DevelopmentConfig)
-	else:
-		app.config.from_object(ProductionConfig)
-	app.config.from_object(Config)
-	# Initialize extensions here
-	from venture_capital_fund_manager_api.extensions import db, ma, migrate
-    from venture_capital_fund_manager_api.api import api_bp
-	db.init_app(app)
-	ma.init_app(app)
-	migrate.init_app(app, db)
-	# register blueprints
-	app.register_blueprint(api_bp, url_prefix='/api')
+    app = Flask(__name__)
 
-	# Basic route for health check
-	@app.route('/')
-	def health_check():
-		return jsonify({"status": "API is running"}), 200
-	return app
+    # Load configuration
+    env = os.environ.get('FLASK_ENV', 'development')
+    if env == 'development':
+        app.config.from_object(DevelopmentConfig)
+    else:
+        app.config.from_object(ProductionConfig)
+    app.config.from_object(Config)
+
+    # Initialize extensions here
+    from venture_capital_fund_manager_api.extensions import db, ma, migrate
+    from venture_capital_fund_manager_api.api import api_bp
+
+    db.init_app(app)
+    ma.init_app(app)
+    migrate.init_app(app, db)
+
+    # Register blueprints
+    app.register_blueprint(api_bp, url_prefix='/api')
+
+    # Basic route for health check
+    @app.route('/')
+    def health_check():
+        return jsonify({"status": "API is running"}), 200
+
+    return app
+
 if __name__ == '__main__':
-	app = create_app()
-	app.run(debug=True)
+    app = create_app()
+    app.run(debug=True)

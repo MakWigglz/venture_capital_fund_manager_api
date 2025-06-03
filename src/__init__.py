@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from config import Config
-from instance.config import DevelopmentConfig, ProductionConfig
+from venture_capital_fund_manager_api.config import Config
+from venture_capital_fund_manager_api.instance.config import DevelopmentConfig, ProductionConfig
 import os
 
 def create_app():
@@ -13,12 +13,12 @@ def create_app():
 		app.config.from_object(ProductionConfig)
 	app.config.from_object(Config)
 	# Initialize extensions here
-	from .extensions import db, ma, migrate
+	from venture_capital_fund_manager_api.extensions import db, ma, migrate
+    from venture_capital_fund_manager_api.api import api_bp
 	db.init_app(app)
 	ma.init_app(app)
 	migrate.init_app(app, db)
 	# register blueprints
-	from .api import api_bp
 	app.register_blueprint(api_bp, url_prefix='/api')
 
 	# Basic route for health check

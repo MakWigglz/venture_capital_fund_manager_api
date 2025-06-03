@@ -7,7 +7,7 @@ class Fund(db.Model):
 	name = db.Column(db.String(100), unique=True, nullable=False)
 	target_size = db.Column(db.Numeric(15, 2), nullable=False)
 	commited_capital = db.Column(db.Numeric(15, 2), default=0.0)
-	    invested_capital = db.Column(db.Numeric(15, 2), default=0.0)
+	invested_capital = db.Column(db.Numeric(15, 2), default=0.0)
     vintage_year = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

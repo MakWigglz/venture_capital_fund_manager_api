@@ -3,6 +3,7 @@ from venture_capital_fund_manager_api.config import Config
 from venture_capital_fund_manager_api.instance.config import DevelopmentConfig, ProductionConfig
 import os
 from flasgger import Swagger
+from .extensions import db, ma, migrate, jwt
 
 def create_app():
     app = Flask(__name__)
@@ -22,6 +23,7 @@ def create_app():
     db.init_app(app)
     ma.init_app(app)
     migrate.init_app(app, db)
+	jwt.init_app(app) # Initialize JWT
 
     # Register blueprints
     app.register_blueprint(api_bp, url_prefix='/api')

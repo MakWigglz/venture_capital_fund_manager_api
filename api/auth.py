@@ -1,9 +1,8 @@
 from flask import request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, JWTManager
 from werkzeug.security import generate_password_hash, check_password_hash
-from ..models import User # You'd need a User model
-from ..extensions import db, ma # Assuming JWTManager is initialized in extensions
-
+from venture_capital_fund_manager_api.models import User
+from venture_capital_fund_manager_api.extensions import db, ma
 @api_bp.route('/register', methods=['POST'])
 def register():
     username = request.json.get('username', None)

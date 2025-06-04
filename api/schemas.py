@@ -9,6 +9,7 @@ class FundSchema(ma.SQLAlchemyAutoSchema):
         include_relationships = True # Include related investments (optional, can be controlled)
 
     investments = fields.List(fields.Nested(lambda: InvestmentSchema(exclude=("fund",)))) # Avoid circular reference
+print(investments)
 
 class CompanySchema(ma.SQLAlchemyAutoSchema):
     class Meta:

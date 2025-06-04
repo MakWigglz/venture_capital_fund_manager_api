@@ -10,7 +10,7 @@ class Fund(db.Model):
 	invested_capital = db.Column(db.Numeric(15, 2), default=0.0)
     vintage_year = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow,onupdate=datetime.utcnow)
 
     investments = db.relationship('Investment', backref='fund', lazy=True)
 

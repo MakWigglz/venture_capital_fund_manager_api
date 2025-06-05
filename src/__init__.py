@@ -4,6 +4,7 @@ from venture_capital_fund_manager_api.instance.config import DevelopmentConfig, 
 import os
 from flasgger import Swagger
 from venture_capital_fund_manager_api.extensions import db, ma, migrate, jwt
+from flask_migrate import Migrate
 
 def create_app():
     app = Flask(__name__)
@@ -14,18 +15,16 @@ def create_app():
         app.config.from_object(DevelopmentConfig)
     else:
         app.config.from_object(ProductionConfig)
-    app.config.from_object(Config)
+        app.config.from_object(Config)
 
-    # Initialize extensions here
-    from venture_capital_fund_manager_api.extensions import db, ma, migrate, jwt
-    from venture_capital_fund_manager_api.api import api_bp
-
+    # Initialize extensions
     db.init_app(app)
     ma.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)  # Initialize JWT
 
     # Register blueprints
+    from venture_capital_fund_manager_api.api import api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
 
     # Basic route for health check
@@ -33,7 +32,7 @@ def create_app():
     def health_check():
         return jsonify({"status": "API is running"}), 200
 
-    return app
+    return app  # Correct placement of return
 
 if __name__ == '__main__':
     app = create_app()

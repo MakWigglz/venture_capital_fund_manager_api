@@ -1,6 +1,6 @@
 import requests
-from ..models import Company, FinancialData
-from ..extensions import db
+from .models import Company, FinancialData
+from .extensions import db
 from datetime import date
 import os
 

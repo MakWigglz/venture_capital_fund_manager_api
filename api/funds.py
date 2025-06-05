@@ -1,8 +1,8 @@
 from flask import request, jsonify
 from . import api_bp
-from ..models import Fund
-from ..schemas import FundSchema
-from ..extensions import db
+from .models import Fund
+from .schemas import FundSchema
+from .extensions import db
 from sqlalchemy.exc import IntegrityError
 
 fund_schema = FundSchema()

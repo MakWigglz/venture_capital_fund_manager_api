@@ -1,4 +1,4 @@
-from venture_capital_fund_manager_api.extensions import db
+from .extensions import db
 from datetime import datetime
 
 class Fund(db.Model):

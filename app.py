@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-from venture_capital_fund_manager_api.config import Config
-from venture_capital_fund_manager_api.instance.config import DevelopmentConfig, ProductionConfig
+from .config import Config
+from .instance.config import DevelopmentConfig, ProductionConfig
 import os
 from flasgger import Swagger
-from venture_capital_fund_manager_api.extensions import db, ma, migrate, jwt
+from .extensions import db, ma, migrate, jwt
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
@@ -30,7 +30,7 @@ def create_app():
     jwt.init_app(app)  # Initialize JWT
 
     # Register blueprints
-    from venture_capital_fund_manager_api.api import api_bp
+    from .api import api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
 
     # Basic route for health check

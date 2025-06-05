@@ -1,5 +1,5 @@
-from ..models import Fund, Investment, FinancialData
-from ..extensions import db
+from .models import Fund, Investment, FinancialData
+from .extensions import db
 from datetime import datetime, date
 from decimal import Decimal
 

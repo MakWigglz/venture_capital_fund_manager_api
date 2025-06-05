@@ -1,7 +1,7 @@
 import timeit
-from .app import create_app
-from .extensions import db
-from .models import Fund, Company, Investment, FinancialData
+from app import create_app
+from extensions import db
+from models import Fund, Company, Investment, FinancialData
 from datetime import date
 from decimal import Decimal
 

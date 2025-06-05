@@ -1,8 +1,8 @@
 from flask import request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, JWTManager
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import User
-from .extensions import db, ma
+from models import User
+from extensions import db, ma
 @api_bp.route('/register', methods=['POST'])
 def register():
     username = request.json.get('username', None)

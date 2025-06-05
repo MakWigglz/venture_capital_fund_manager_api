@@ -1,5 +1,5 @@
-from .extensions import ma
-from .models import Fund, Company, Investment, FinancialData
+from extensions import ma
+from models import Fund, Company, Investment, FinancialData
 from marshmallow import fields
 
 class FundSchema(ma.SQLAlchemyAutoSchema):

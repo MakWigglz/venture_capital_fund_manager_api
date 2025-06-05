@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-from .config import Config
-from .instance.config import DevelopmentConfig, ProductionConfig
+from config import Config
+from instance.config import DevelopmentConfig, ProductionConfig
 import os
 from flasgger import Swagger
-from .extensions import db, ma, migrate, jwt
+from extensions import db, ma, migrate, jwt
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
